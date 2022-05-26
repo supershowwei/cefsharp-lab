@@ -1,7 +1,10 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Diagnostics;
+using System.Windows.Forms;
 using CefSharp;
 using CefSharp.SchemeHandler;
 using CefSharp.WinForms;
+using NetCoreCefSharpLab.ViewBindings;
 
 namespace NetCoreCefSharpLab
 {
@@ -22,12 +25,24 @@ namespace NetCoreCefSharpLab
                 {
                     SchemeName = "local",
                     DomainName = "shiseido",
-                    SchemeHandlerFactory = new FolderSchemeHandlerFactory(@"views", defaultPage: "index.html")
+                    SchemeHandlerFactory = new FolderSchemeHandlerFactory(@"Views", defaultPage: "index.html")
                 });
 
             Cef.Initialize(settings);
 
-            this.browser = new ChromiumWebBrowser("local://shiseido/") { Dock = DockStyle.Fill };
+            this.browser = new ChromiumWebBrowser { Dock = DockStyle.Fill };
+
+            this.browser.JavascriptObjectRepository.ResolveObject += (sender, e) =>
+                {
+                    e.ObjectRepository.Register(e.ObjectName, ViewBindingFactory.Instance.Create(e.ObjectName));
+                };
+
+            this.browser.ConsoleMessage += (sender, args) =>
+                {
+                    Debug.WriteLine(args.Message);
+                };
+
+            this.browser.LoadUrl("local://shiseido/");
 
             this.Controls.Add(this.browser);
         }

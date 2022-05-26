@@ -2,12 +2,17 @@ $(function () {
     window.objectBound.then(() => {
 
         $("#test").on("click", () => {
-            window.viewBinding.add(1, 1).then(result => {
-                alert(result);
-                window.location = "/test/test.html";
+            // window.viewBinding.add(1, 1).then(result => {
+            //     alert(result);
+            //     window.location = "/test/test.html";
+            // });
+
+            window.viewBinding.getTestData().then(result => {
+                console.log(JSON.stringify(result));
             });
+
         });
-        
+
     });
 });
 

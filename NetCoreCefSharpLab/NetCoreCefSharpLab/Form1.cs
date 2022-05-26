@@ -16,20 +16,6 @@ namespace NetCoreCefSharpLab
         {
             this.InitializeComponent();
 
-            var settings = new CefSettings();
-
-            settings.CefCommandLineArgs.Add("enable-media-stream", "1");
-
-            settings.RegisterScheme(
-                new CefCustomScheme
-                {
-                    SchemeName = "local",
-                    DomainName = "shiseido",
-                    SchemeHandlerFactory = new FolderSchemeHandlerFactory(@"Views", defaultPage: "index.html")
-                });
-
-            Cef.Initialize(settings);
-
             this.browser = new ChromiumWebBrowser { Dock = DockStyle.Fill };
 
             this.browser.JavascriptObjectRepository.ResolveObject += (sender, e) =>

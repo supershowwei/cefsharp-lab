@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using CefSharp;
+using CefSharp.SchemeHandler;
+using CefSharp.WinForms;
 
 namespace NetCoreCefSharpLab
 {
@@ -14,6 +17,21 @@ namespace NetCoreCefSharpLab
         [STAThread]
         static void Main()
         {
+            var settings = new CefSettings();
+
+            settings.CefCommandLineArgs.Add("enable-media-stream", "1");
+
+            settings.RegisterScheme(
+                new CefCustomScheme
+                {
+                    SchemeName = "local",
+                    DomainName = "shiseido",
+                    SchemeHandlerFactory = new FolderSchemeHandlerFactory(@"Views", defaultPage: "index.html")
+                });
+
+            Cef.EnableHighDPISupport();
+            Cef.Initialize(settings);
+
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

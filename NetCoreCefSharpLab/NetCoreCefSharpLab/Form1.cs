@@ -20,7 +20,7 @@ namespace NetCoreCefSharpLab
 
             this.browser.JavascriptObjectRepository.ResolveObject += (sender, e) =>
                 {
-                    e.ObjectRepository.Register(e.ObjectName, ViewBindingFactory.Instance.Create(e.ObjectName));
+                    e.ObjectRepository.Register(e.ObjectName, ViewBindingFactory.Instance.Create(e.ObjectName, this.browser));
                 };
 
             this.browser.ConsoleMessage += (sender, args) =>

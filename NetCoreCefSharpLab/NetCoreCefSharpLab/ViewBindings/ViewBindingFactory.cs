@@ -1,4 +1,5 @@
 ﻿using System;
+using CefSharp;
 
 namespace NetCoreCefSharpLab.ViewBindings
 {
@@ -12,15 +13,15 @@ namespace NetCoreCefSharpLab.ViewBindings
 
         public static ViewBindingFactory Instance => Lazy.Value;
 
-        public object Create(string objectName)
+        public object Create(string objectName, IChromiumWebBrowserBase browser)
         {
             var viewName = objectName.Replace("#viewBinding", string.Empty);
 
             switch (viewName)
             {
                 case "/":
-                case "/index": return new IndexViewBinding();
-                case "/test/test": return new IndexViewBinding();
+                case "/index": return new IndexViewBinding(browser);
+                case "/test/test": return new IndexViewBinding(browser);
                 default: throw new ArgumentOutOfRangeException(nameof(objectName));
             }
         }

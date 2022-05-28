@@ -1,15 +1,31 @@
 $(function () {
     window.objectBound.then(() => {
+        console.log(CefSharp.IsObjectCached("/#viewBinding"));
 
         $("#test").on("click", () => {
-            // window.viewBinding.add(1, 1).then(result => {
-            //     alert(result);
-            //     window.location = "/test/test.html";
+            window.viewBinding.add(1, 1).then(result => {
+                console.log(result);
+                window.location = "/test/test.html";
+            });
+
+            // window.viewBinding.getTestData().then(result => {
+            //     console.log(JSON.stringify(result));
             // });
 
-            window.viewBinding.getTestData().then(result => {
-                console.log(JSON.stringify(result));
-            });
+            // window.viewBinding.getTestDataWithCallback(function (result) {
+            //     console.log(JSON.stringify(result));
+            // });
+
+            // window.viewBinding.getSupportedPrimitiveDataTypesWithCallback(function (a, b, c, d, e, f, g, h) {
+            //     console.log(a);
+            //     console.log(b);
+            //     console.log(c);
+            //     console.log(d);
+            //     console.log(e);
+            //     console.log(f);
+            //     console.log(JSON.stringify(g));
+            //     console.log(btoa(String.fromCharCode.apply(null, new Uint8Array(h))));
+            // });
 
         });
 

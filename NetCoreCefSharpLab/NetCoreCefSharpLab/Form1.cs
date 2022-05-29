@@ -43,14 +43,5 @@ namespace NetCoreCefSharpLab
 
             this.Controls.Add(this.browser);
         }
-
-        protected override void OnFormClosing(FormClosingEventArgs e)
-        {
-            this.browser.Dispose();
-
-            Cef.Shutdown();
-
-            base.OnFormClosing(e);
-        }
     }
 }

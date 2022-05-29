@@ -46,7 +46,6 @@ $(function () {
             window.viewBinding.getObjectList().then(result => {
                 console.log(JSON.stringify(result));
             });
-            // );
 
             window.viewBinding.getDateTime().then(result => {
                 console.log(result);

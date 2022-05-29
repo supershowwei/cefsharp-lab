@@ -1,12 +1,17 @@
+function getDate() { return new Date(); }
+function getObject() { return { id: 1, name: "Johnny" }; }
+function getNestedObject() { return { id: 1, name: "Johnny", user: { id: 2, name: "Mark" } }; }
+function getObjectList() { return [{ id: 1, name: "Johnny" }]; }
+function getNestedObjectList() { return [{ id: 1, name: "Johnny", user: { id: 2, name: "Mark" } }]; }
+
 $(function () {
     window.objectBound.then(() => {
-        console.log(CefSharp.IsObjectCached("/#viewBinding"));
 
         $("#test").on("click", () => {
-            window.viewBinding.add(1, 1).then(result => {
-                console.log(result);
-                window.location = "/test/test.html";
-            });
+            // window.viewBinding.add(1, 1).then(result => {
+            //     console.log(result);
+            //     window.location = "/test/test.html";
+            // });
 
             // window.viewBinding.getTestData().then(result => {
             //     console.log(JSON.stringify(result));
@@ -26,6 +31,26 @@ $(function () {
             //     console.log(JSON.stringify(g));
             //     console.log(btoa(String.fromCharCode.apply(null, new Uint8Array(h))));
             // });
+
+            // window.viewBinding.passSupportedPrimitiveDataTypes(
+            //     1,
+            //     1.1,
+            //     new Date(),
+            //     true,
+            //     "str",
+            //     { id: 1, name: "Johnny", user: { id: 2, name: "Mary" } },
+            //     [1, 2, 3],
+            //     [{ id: 1, name: "Johnny", user: { id: 2, name: "Mary" } }]
+            // );
+
+            window.viewBinding.getObjectList().then(result => {
+                console.log(JSON.stringify(result));
+            });
+            // );
+
+            window.viewBinding.getDateTime().then(result => {
+                console.log(result);
+            });
 
         });
 

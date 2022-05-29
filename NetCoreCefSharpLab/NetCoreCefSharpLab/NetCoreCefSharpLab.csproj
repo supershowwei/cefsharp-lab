@@ -7,13 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="Views\**">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <PackageReference Include="CefSharp.WinForms.NETCore" Version="100.0.230" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CefSharp.WinForms.NETCore" Version="100.0.230" />
+    <Content Include="Views\**">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

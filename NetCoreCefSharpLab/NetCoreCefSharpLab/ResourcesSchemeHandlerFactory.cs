@@ -18,6 +18,7 @@ namespace NetCoreCefSharpLab
             // 網址轉換為資源名稱
             var resourceName = Regex.Replace(fileName.Replace("/", "."), "\\.(\\d)", "._$1");
 
+            // 從內嵌資源讀取網頁檔
             var resource = Assembly.GetExecutingAssembly().GetManifestResourceStream($"NetCoreCefSharpLab.Views{resourceName}");
 
             if (resource != null)

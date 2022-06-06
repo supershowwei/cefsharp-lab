@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -24,9 +23,10 @@ namespace NetCoreCefSharpLab
             settings.RegisterScheme(
                 new CefCustomScheme
                 {
-                    SchemeName = "local",
-                    DomainName = "shiseido",
-                    SchemeHandlerFactory = new FolderSchemeHandlerFactory(@"Views", defaultPage: "index.html")
+                    SchemeName = "chef",
+                    DomainName = "appcookhouse",
+                    //SchemeHandlerFactory = new FolderSchemeHandlerFactory(@"Views", defaultPage: "index.html")
+                    SchemeHandlerFactory = new ResourcesSchemeHandlerFactory()
                 });
 
             Cef.EnableHighDPISupport();

@@ -7,13 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="CefSharp.WinForms.NETCore" Version="100.0.230" />
+    <PackageReference Include="CefSharp.WinForms.NETCore" Version="102.0.90" />
   </ItemGroup>
 
-  <ItemGroup>
+  <!--<ItemGroup>
     <Content Include="Views\**">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>-->
+
+  <ItemGroup>
+    <EmbeddedResource Include="Views\**" />
   </ItemGroup>
 
 </Project>

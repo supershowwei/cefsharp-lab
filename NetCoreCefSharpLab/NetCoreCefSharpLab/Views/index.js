@@ -43,13 +43,15 @@ $(function () {
             //     [{ id: 1, name: "Johnny", user: { id: 2, name: "Mary" } }]
             // );
 
-            window.viewBinding.getObjectList().then(result => {
-                console.log(JSON.stringify(result));
-            });
+            //window.viewBinding.getObjectList().then(result => {
+            //    console.log(JSON.stringify(result));
+            //});
 
-            window.viewBinding.getDateTime().then(result => {
-                console.log(result);
-            });
+            //window.viewBinding.getDateTime().then(result => {
+            //    console.log(result);
+            //});
+
+            window.location = "/test/test.html";
 
         });
 

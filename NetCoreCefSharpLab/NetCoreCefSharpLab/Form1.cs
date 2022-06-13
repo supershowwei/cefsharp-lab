@@ -70,7 +70,7 @@ namespace NetCoreCefSharpLab
 
                 };
 
-            browser.LoadUrl("local://shiseido/");
+            browser.LoadUrl("chef://appcookhouse/");
 
             this.Controls.Add(browser);
         }

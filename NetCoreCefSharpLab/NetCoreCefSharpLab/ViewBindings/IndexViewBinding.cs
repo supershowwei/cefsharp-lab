@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Dynamic;
+using System.Linq;
 using System.Text;
 using CefSharp;
 using NetCoreCefSharpLab.Models.Data;
@@ -14,6 +15,11 @@ namespace NetCoreCefSharpLab.ViewBindings
         public IndexViewBinding(IChromiumWebBrowserBase browser)
         {
             this.browser = browser;
+        }
+
+        public IndexViewBinding()
+        {
+
         }
 
         public int Add(int a, int b)
@@ -55,6 +61,26 @@ namespace NetCoreCefSharpLab.ViewBindings
 
         public void PassSupportedPrimitiveDataTypes(int a, double b, DateTime c, bool d, string e, dynamic f, List<object> g, List<dynamic> h)
         {
+        }
+
+        public int PassPrimitiveDataTypes(int a, double b, DateTime c, bool d, string e)
+        {
+            return a;
+        }
+
+        public TestData PassObject(dynamic o)
+        {
+            return new TestData { Id = o.id, Name = o.name, Test = new TestData { Id = o.test.id, Name = o.test.name } };
+        }
+
+        public byte[] PassBinary(dynamic bin)
+        {
+            return ((IDictionary<string, object>)bin).Select(kv => Convert.ToByte(kv.Value)).ToArray();
+        }
+
+        public void PassFunction(IJavascriptCallback callback)
+        {
+            callback.ExecuteAsync(new TestData { Id = 1, Name = "Johnny", Test = new TestData { Id = 2, Name = "Mary" } });
         }
 
         public int GetInt()

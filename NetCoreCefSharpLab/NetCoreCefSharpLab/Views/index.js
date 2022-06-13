@@ -1,8 +1,45 @@
+(async function () {
+    await CefSharp.BindObjectAsync("indexViewBinding");
+
+    //const result = await window.indexViewBinding.passPrimitiveDataTypes(1, 0.1, new Date(), true, "str");
+    //const result = await window.indexViewBinding.passObject({ id: 1, name: "Johnny", test: { id: 2, name: "Mary" } });
+    //const result = await window.indexViewBinding.passBinary(new TextEncoder("utf-8").encode("abc123"));
+    window.indexViewBinding.passFunction(function (o) {
+        alert(JSON.stringify(o));
+    });
+
+    //alert(JSON.stringify(result));
+})();
+
 function getDate() { return new Date(); }
 function getObject() { return { id: 1, name: "Johnny" }; }
 function getNestedObject() { return { id: 1, name: "Johnny", user: { id: 2, name: "Mark" } }; }
 function getObjectList() { return [{ id: 1, name: "Johnny" }]; }
 function getNestedObjectList() { return [{ id: 1, name: "Johnny", user: { id: 2, name: "Mark" } }]; }
+function goToHome() {  }
+function goTo(loc) { window.location = loc; }
+function add(a, b) { return a + b; }
+
+function addAsPromise(a, b) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+                resolve(a + b);
+            },
+            100);
+    });
+}
+
+function passPrimitiveDataTypes(a, b, c, d, e) {
+    return a;
+}
+
+function passObject(o) {
+    return o;
+}
+
+function passBinary(bin) {
+    return new Uint8Array(bin);
+}
 
 $(function () {
     window.objectBound.then(() => {

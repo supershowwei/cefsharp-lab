@@ -19,6 +19,7 @@ namespace NetCoreCefSharpLab.ViewBindings
 
             switch (viewName)
             {
+                case "indexViewBinding":
                 case "/":
                 case "/index": return new IndexViewBinding(browser);
                 case "/test/test": return new IndexViewBinding(browser);
